@@ -1,0 +1,54 @@
+<head>
+    <title>jQuery DataTables</title>
+    <style>
+/* Initially hide the table */
+#dataTable, #dataTable_wrapper {
+    display: none;
+}
+
+</style>
+</head>
+<body>
+<html>
+<input type="text" id="textBox1" placeholder="Enter text 1" />
+<input type="text" id="textBox2" placeholder="Enter text 2" />
+<button id="addRecord">Add Record</button>
+
+
+<table id="dataTable" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Text 1</th>
+            <th>Text 2</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+    </tbody>
+</table>
+</html>
+</body>
+<!-- Include jQuery, DataTables JS and CSS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+<script>
+    $(document).ready(function() {
+    var table = $("#dataTable").DataTable();
+
+    $("#addRecord").click(function() {
+        var text1 = $("#textBox1").val();
+        var text2 = $("#textBox2").val();
+
+        table.row.add([text1, text2]).draw();
+
+        if ($("#dataTable").css('display') === 'none') {
+            $("#dataTable, #dataTable_wrapper").show();
+        }
+    });
+});
+
+
+
+
+    </script>
